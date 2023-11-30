@@ -1,0 +1,139 @@
+<LoginInterface>:
+    name: 'loginpage'
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name: "screen1"
+            text: "Sign Up"
+            icon: "account"
+
+            MDBoxLayout:
+                padding: "10dp"
+                orientation: "vertical"
+                size_hint: .8, .2
+                pos_hint: {"center_x": .5, "top": .5}
+                MDTextField:
+                    id: signup_email
+                    hint_text: "Email"
+                MDTextField:
+                    id: signup_username
+                    hint_text: "Username"
+                MDTextField:
+                    id: signup_password
+                    hint_text: "Password"
+                    password: True
+                    password_mask: "*"
+                MDTextField:
+                    id: signup_cname
+                    hint_text: "Company Name"
+                MDTextField:
+                    id: signup_ccode
+                    hint_text: "Company Code"
+            MDBoxLayout:
+                padding: "10dp"
+                size_hint_x: .2
+                size_hint_y: None
+                height: "40dp"
+                pos_hint: {"right": .9, "top": .3}
+                MDRaisedButton:
+                    text: "Sign Up"
+                    on_release: root.creator()
+        MDBottomNavigationItem:
+            name: "screen2"
+            text: "Login"
+            icon: "login"
+            MDBoxLayout:
+                padding: "10dp"
+                orientation: "vertical"
+                size_hint: .8, .2
+                pos_hint: {"center_x": .5, "top": .7}
+                MDTextField:
+                    id: login_username
+                    required: True
+                    hint_text: "Username"
+                MDTextField:
+                    id: login_password
+                    password:True
+                    password_mask: "*"
+                    hint_text: "Password"
+                    required: True
+
+            MDBoxLayout:
+                padding: "10dp"
+                size_hint_x: .2
+                size_hint_y: None
+                height: "40dp"
+                pos_hint: {"right": .9, "top": .275}
+                MDRaisedButton:
+                    text: "Log in"
+                    on_release: root.login()
+            MDBoxLayout:
+                padding: "10dp"
+                size_hint_x: .2
+                size_hint_y: None
+                height: "40dp"
+                padding:90,0
+                pos_hint: {"left": .9, "top": .3}
+                MDRaisedButton:
+                    text: "Forgot Password?"
+                    on_release:
+                        root.forgot_password()
+
+<MainScreen>:
+
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            id: urgent_tab
+            name: "Urgent"
+            text: "Urgent"
+            icon: "alert-circle"
+
+        MDBottomNavigationItem:
+            id: overview_tab
+            name: "Overview"
+            text: "Overview"
+            icon: "view-dashboard"
+
+        MDBottomNavigationItem:
+            id: edit_tab
+            name: "Edit"
+            text: "Edit"
+            icon: "clipboard-list"
+
+        MDBottomNavigationItem:
+            id: profile_tab
+            name: "profile"
+            text: "Profile"
+            icon: "account"
+
+<ResetPasswordPage>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: '10dp'
+        size_hint: .8, .2
+        pos_hint: {"center_x": .5, "top": .7}
+        MDTextField:
+            id: txt_username
+            hint_text: "Username"
+        MDTextField:
+            id: txt_password
+            hint_text: "Password"
+            password: True
+            password_mask: '*'
+        MDTextField:
+            id: txt_confirm_password
+            hint_text: "Confirm Password"
+            password: True
+            password_mask: '*'
+    MDBoxLayout:
+        padding: "10dp"
+        size_hint_x: .2
+        size_hint_y: None
+        height: "40dp"
+        pos_hint: {"right": .9, "top": .3}
+        MDRaisedButton:
+            id: btn_reset
+            text: "RESET"
+            on_release:
+                root.reset_password()
+                root.manager.current='loginpage'
+
